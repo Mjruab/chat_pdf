@@ -19,7 +19,7 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────
-# ESTILOS (TU IDENTIDAD)
+# ESTILOS
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
@@ -92,47 +92,40 @@ with st.sidebar:
         os.environ['OPENAI_API_KEY'] = ke
 
 # ─────────────────────────────────────────────
-# HEADER
+# HEADER (CON IMAGEN)
 # ─────────────────────────────────────────────
-st.markdown("""
-<div class="header-card">
-    <h1>📄 PDF Analyzer</h1>
-    <p>Explora documentos y haz preguntas inteligentes sobre su contenido</p>
-</div>
-""", unsafe_allow_html=True)
+colH1, colH2 = st.columns([3,1])
 
-# ─────────────────────────────────────────────
-# LAYOUT PRINCIPAL
-# ─────────────────────────────────────────────
-col1, col2 = st.columns([2,1])
+with colH1:
+    st.markdown("""
+    <div class="header-card">
+        <h1 style="margin-bottom:6px;">📄 PDF Analyzer</h1>
+        <p style="margin:0; color:#f57f17;">
+            Explora documentos y haz preguntas inteligentes sobre su contenido
+        </p>
+        <p style="margin-top:8px; font-size:0.8rem; color:#9ca3af;">
+    """, unsafe_allow_html=True)
 
-# ────────────────
-# COLUMNA IZQUIERDA
-# ────────────────
-with col1:
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
+    st.write(f"Python {platform.python_version()}")
 
-    st.markdown("### 📂 Cargar documento")
-    pdf = st.file_uploader("Sube tu PDF", type="pdf")
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# ────────────────
-# COLUMNA DERECHA
-# ────────────────
-with col2:
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
-
-    st.markdown("### ℹ️ Información")
-    st.write("Python:", platform.python_version())
-
+with colH2:
     try:
         image = Image.open('Chat_pdf.png')
-        st.image(image)
+        st.image(image, use_container_width=True)
     except:
-        st.info("Sin imagen")
+        pass
 
-    st.markdown('</div>', unsafe_allow_html=True)
+# ─────────────────────────────────────────────
+# CARGA DE PDF
+# ─────────────────────────────────────────────
+st.markdown('<div class="section-card">', unsafe_allow_html=True)
+
+st.markdown("### 📂 Cargar documento")
+pdf = st.file_uploader("Sube tu PDF", type="pdf")
+
+st.markdown('</div>', unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────
 # PROCESAMIENTO
@@ -151,7 +144,7 @@ if pdf is not None and ke:
                 text += contenido
 
         if not text.strip():
-            st.error("No se pudo extraer texto")
+            st.error("No se pudo extraer texto del PDF")
             st.stop()
 
         st.success(f"{len(text):,} caracteres procesados")
