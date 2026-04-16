@@ -108,8 +108,6 @@ with colH1:
 
     st.write(f"Python {platform.python_version()}")
 
-    st.markdown("</div>", unsafe_allow_html=True)
-
 with colH2:
     try:
         image = Image.open('Chat_pdf.png')
