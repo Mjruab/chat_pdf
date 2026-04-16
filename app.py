@@ -106,7 +106,7 @@ with colH1:
         <p style="margin-top:8px; font-size:0.8rem; color:#9ca3af;">
     """, unsafe_allow_html=True)
 
-    st.write(f"Python {platform.python_version()}")
+    st.write(f"Versión Python {platform.python_version()}")
 
 with colH2:
     try:
