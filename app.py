@@ -101,7 +101,7 @@ with colH1:
     <div class="header-card">
         <h1 style="margin-bottom:6px;">📄 PDF Analyzer</h1>
         <p style="margin:0; color:#f57f17;">
-            Explora documentos y haz preguntas inteligentes sobre su contenido
+            Explora tus documentos haciendo preguntas sobre su contenido!
         </p>
         <p style="margin-top:8px; font-size:0.8rem; color:#9ca3af;">
     """, unsafe_allow_html=True)
