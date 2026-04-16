@@ -118,7 +118,6 @@ with colH2:
 # ─────────────────────────────────────────────
 # CARGA DE PDF
 # ─────────────────────────────────────────────
-st.markdown('<div class="section-card">', unsafe_allow_html=True)
 
 st.markdown("### 📂 Cargar documento")
 pdf = st.file_uploader("Sube tu PDF", type="pdf")
